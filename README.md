@@ -10,21 +10,19 @@ Prototipo funcional para gestión de hospedaje: catálogo visual, verificación 
 - Reserva autogestionada y cálculo automático del **30% de anticipo**.
 - Pagos en línea (mock o pasarela), ticket con **QR** enviado por correo.
 - Multilenguaje **ES/EN**.
-- Gestión de usuarios y roles (**OWNER / ADMIN / STAFF / CUSTOMER**).
+- Gestión de usuarios y roles (**CLIENTE/TURISTA / ADMINISTRADORES / EMPLEADOS**).
 
----
+🗃️ Modelo de datos (resumen)
 
-## ⚡ Instalación rápida
-```bash
-git clone <repo>
-cd <repo>
-cp .env.example .env   # Ajustar credenciales
-npm run db:migrate && npm run db:seed
-npm run dev            # Levanta API
-npm run web:dev        # Levanta frontend
+Usuarios ↔ Roles
 
-</div>
-```
+Hoteles → Categorías → Habitaciones → Fotos
+
+Habitaciones ↔ Equipamiento
+
+Price_History (categoría o habitación)
+
+Reservas → Pagos
 
   </div>
 </body>
