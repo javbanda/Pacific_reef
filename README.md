@@ -20,9 +20,7 @@ Prototipo funcional para gestión de hospedaje: catálogo visual, verificación 
 
 - **Habitaciones** ↔ Equipamiento
 
-
-
-Reservas → Pagos
+- **Reservas** → Pagos
 
   </div>
 </body>
