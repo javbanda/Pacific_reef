@@ -10,7 +10,7 @@ Prototipo funcional para gestión de hospedaje: catálogo visual, verificación 
 - Reserva autogestionada y cálculo automático del **30% de anticipo**.
 - Pagos en línea (mock o pasarela), ticket con **QR** enviado por correo.
 - Multilenguaje **ES/EN**.
-- Gestión de usuarios y roles (**CLIENTE/TURISTA / ADMINISTRADORES / EMPLEADOS**).
+- Gestión de usuarios y roles (**CLIENTE / TURISTA / ADMINISTRADORES / EMPLEADOS**).
 
 ## 🗃️ Modelo de datos (resumen)
 
