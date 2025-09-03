@@ -12,15 +12,15 @@ Prototipo funcional para gestión de hospedaje: catálogo visual, verificación 
 - Multilenguaje **ES/EN**.
 - Gestión de usuarios y roles (**CLIENTE/TURISTA / ADMINISTRADORES / EMPLEADOS**).
 
-🗃️ Modelo de datos (resumen)
+## 🗃️ Modelo de datos (resumen)
 
-Usuarios ↔ Roles
+- **Usuarios** ↔ Roles
 
-Hoteles → Categorías → Habitaciones → Fotos
+- **Hoteles** → Categorías → Habitaciones → Fotos
 
-Habitaciones ↔ Equipamiento
+- **Habitaciones** ↔ Equipamiento
 
-Price_History (categoría o habitación)
+
 
 Reservas → Pagos
 
