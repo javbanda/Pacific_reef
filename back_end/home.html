@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Pacific Reef</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 🔹 Encabezado -->
+  <header class="navbar">
+    <div class="nav-left">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Acerca</a></li>
+        <li><a href="#">Habitaciones</a></li>
+        <li><a href="#">Spa</a></li>
+        <li><a href="#">Restaurante</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-center">
+      <!-- 🔹 Aquí va tu logo -->
+      <img src="img/logo.png" alt="Logo del hotel" class="logo-img">
+    </div>
+
+    <div class="nav-right">
+      <button class="btn-agenda" onclick="location.href='room.html'">AGENDAR</button>
+
+      <div class="lang">ESP ▼</div>
+    </div>
+  </header>
+
+  <!-- 🔹 Sección principal -->
+  <section class="hero">
+    <img src="img/home.jpg" alt="Vista del hotel" class="hero-img">
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+      <h2>TU ESCAPE<br>EXCLUSIVO</h2>
+      <button class="btn-descubre">DESCUBRE</button>
+    </div>
+
+    <div class="reserva-box">
+      <div class="campo">
+        <span class="icon">📅</span>
+        <div>
+          <label>FECHA</label>
+          <p>Lun, 20 Dic 2025</p>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="icon">⏰</span>
+        <div>
+          <label>HORA</label>
+          <p>13:30 PM</p>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="icon">👤</span>
+        <div>
+          <label>HUÉSPEDES</label>
+          <p>2 Adultos</p>
+        </div>
+      </div>
+      <button class="btn-reserva">AGENDA AHORA</button>
+    </div>
+  </section>
+</body>
+</html>

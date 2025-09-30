@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habitaciones - Hotel Pacific Reef</title>
+  <link rel="stylesheet" href="style_home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* 🔹 Estilo agregado para centrar el título */
+    .hero-room {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 60vh; /* ajusta la altura si deseas más o menos espacio */
+      background: url('img/habitaciones.jpg') center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-content {
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 2.8em;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2em;
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔹 Encabezado -->
+  <header class="navbar">
+    <div class="nav-left">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="#">Acerca</a></li>
+        <li><a href="room.html" class="active">Habitaciones</a></li>
+        <li><a href="#">Spa</a></li>
+        <li><a href="#">Restaurante</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-center">
+      <img src="img/logo.png" alt="Logo del hotel" class="logo-img">
+    </div>
+
+    <div class="nav-right">
+      <button class="btn-agenda" onclick="location.href='room.html'">AGENDAR</button>
+      <div class="lang">ESP ▼</div>
+    </div>
+  </header>
+
+  <!-- 🔹 Hero / Encabezado visual -->
+  <section class="hero-room">
+    <div class="hero-content">
+      <h1 class="hero-title">NUESTRAS HABITACIONES</h1>
+      <p class="hero-subtitle">Un hotel que te hace sentir como en casa</p>
+      <button class="btn-agendar" onclick="location.href='room.html'">AGENDAR</button>
+    </div>
+  </section>
+
+  <!-- 🔹 Sección de habitaciones -->
+  <section class="habitaciones">
+    <div class="habitaciones-grid">
+      <div class="habitacion">
+        <div class="info">
+          <img src="img/habitacion_1.jpg" alt="Habitación ejecutiva">
+          <h4>VIP ROOM – EJECUTIVA</h4>
+          <p>Orientada a huéspedes de negocios</p>
+        </div>
+      </div>
+
+      <div class="habitacion">
+        <div class="info">
+          <img src="img/habitacion_2.jpg" alt="Habitación deluxe">
+          <h4>SUNNY ROOM – DELUXE</h4>
+          <p>Un piso más allá de lo estándar, con vistas al mar.</p>
+        </div>
+      </div>
+
+      <div class="habitacion">
+        <img src="img/habitacion_3.jpg" alt="Habitación familiar">
+        <div class="info">
+          <h4>FAMILY SUITE – PREMIUM</h4>
+          <p>Ideal para disfrutar en familia, con espacios amplios y luminosos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Sección del restaurante -->
+  <section class="restaurante">
+    <h3 class="subtitulo">NUESTRO RESTAURANTE</h3>
+    <h2 class="titulo">LA GASTRONOMÍA QUE COMPLEMENTA TU<br>ESTANCIA PERFECTA</h2>
+    <p class="texto">
+      Disfruta de una experiencia culinaria única frente al mar, con sabores locales, ingredientes frescos y un servicio impecable. 
+      Nuestro restaurante es el complemento ideal para tu estadía.
+    </p>
+    <button class="btn-explorar">EXPLORAR</button>
+
+    <div class="comidas-grid">
+      <div class="comida">
+        <img src="img/comida_1.jpg" alt="Comedor al aire libre">
+        <h4>PREPÁRATE PARA VIVIR UNA COMIDA MEMORABLE</h4>
+      </div>
+      <div class="comida">
+        <img src="img/comida_2.jpg" alt="Evento gastronómico">
+        <h4>AGENDA TU PRÓXIMO EVENTO</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Pie de página -->
+  <footer class="footer">
+    <p>© 2025 Hotel Pacific Reef. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
