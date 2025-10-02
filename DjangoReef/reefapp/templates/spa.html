@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- 🔹 Sección del spa -->
+  <section class="spaa">
+    <h3 class="subtitulo">NUESTRO SPA</h3>
+    <h2 class="titulo">LA EXPERIENCIA DE BIENESTAR QUE TU CUERPO Y MENTE NECESITAN</h2>
+    <p class="texto">
+      Descubre un oasis de tranquilidad donde el tiempo se detiene. Deja que el estrés se disuelva con nuestros tratamientos especializados, 
+      diseñados para reconectar contigo mismo y encontrar el equilibrio perfecto entre cuerpo y mente.
+    </p>
+    <button class="btn-explorar">EXPLORAR</button>
+
+    <div class="spaa-grid">
+      <div class="comida">
+        <img src="{% static 'img/SalaRelajo.jpg' %}" alt="Sala Relajación">
+        <h4>PREPÁRATE PARA UNA EXPERIENCIA SENSORIAL ÚNICA</h4>
+      </div>
+      <div class="comida">
+        <img src="{% static 'img/TerapiaPiedras.jpg' %}" alt="Terapia Piedras">
+        <h4>RESERVA TU MOMENTO DE BIENESTAR</h4>
+      </div>
+    </div>
+  </section>
+
+ {% endblock %}

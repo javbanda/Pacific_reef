@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- 🔹 Sección del restaurante -->
+  <section class="restaurante">
+    <h3 class="subtitulo">NUESTRO RESTAURANTE</h3>
+    <h2 class="titulo">LA GASTRONOMÍA QUE COMPLEMENTA TU<br>ESTANCIA PERFECTA</h2>
+    <p class="texto">
+      Disfruta de una experiencia culinaria única frente al mar, con sabores locales, ingredientes frescos y un servicio impecable. 
+      Nuestro restaurante es el complemento ideal para tu estadía.
+    </p>
+    <button class="btn-explorar">EXPLORAR</button>
+
+    <div class="comidas-grid">
+      <div class="comida">
+        <img src="{% static 'img/comida_1.jpg' %}" alt="Comedor al aire libre">
+        <h4>PREPÁRATE PARA VIVIR UNA COMIDA MEMORABLE</h4>
+      </div>
+      <div class="comida">
+        <img src="{% static 'img/comida_2.jpg' %}" alt="Evento gastronómico">
+        <h4>AGENDA TU PRÓXIMO EVENTO</h4>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}

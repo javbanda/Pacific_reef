@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- 🔹 Hero / Encabezado visual -->
+  <section class="hero-room">
+    <img src="{% static 'img/habitaciones.jpg' %}" alt="Vista de habitaciones" class="hero-img">
+    <div class="hero-content">
+      <h1 class="hero-title">NUESTRAS HABITACIONES</h1>
+      <p class="hero-subtitle">Un hotel que te hace sentir como en casa</p>
+      <button class="btn-agendar" onclick="location.href='room.html'">AGENDAR</button>
+    </div>
+  </section>
+
+  <!-- 🔹 Sección de habitaciones -->
+  <!-- Turista -->
+  <section class="habitaciones">
+    <h1 class="hero-title2">Clase Turista</h1>
+    <div class="habitaciones-grid">
+      <div class="habitacion">
+        <div class="info">
+          <img src="{% static 'img/Habitaciones/hindiv1.jpg' %}" alt="Habitación individuar">
+          <h4>HABITACIÓN INDIVIDUAL</h4>
+          <p>Tu refugio personal en la ciudad. Diseñada para el viajero moderno que busca comodidad y funcionalidad en un espacio acogedor.</p>
+        </div>
+      </div>
+
+      <div class="habitacion">
+        <div class="info">
+          <img src="{% static 'img/Habitaciones/hdoble1.jpg' %}" alt="Habitación doble">
+          <h4>HABITACIÓN DOBLE</h4>
+          <p>El equilibrio perfecto entre confort y precio. Ideal para parejas o viajeros que buscan un espacio cómodo con todas las comodidades esenciales.</p>
+        </div>
+      </div>
+
+      <div class="habitacion">
+        <div class="info">
+          <img src="{% static 'img/Habitaciones/hfamiliar1.jpg' %}" alt="Habitación familiar">
+          <h4>HABITACIÓN FAMILIAR</h4>
+          <p>Espacios que unen. Diseñada para familias que valoran la comodidad y el tiempo juntos, con el espacio perfecto para crear recuerdos inolvidables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium -->
+  <section class="habitaciones">
+    <h1 class="hero-title2">Clase Premium</h1>    
+    <div class="habitaciones-grid">
+      <div class="habitacion">
+        <div class="info">
+          <img src="{% static 'img/Habitaciones/sdoblep1.jpg' %}" alt="Doble Premium">
+          <h4>SUITE DOBLE PREMIUM</h4>
+          <p>Elegancia y sofisticación con vista al mar. Experimenta el lujo contemporáneo en un espacio diseñado para el descanso y la desconexión total.</p>
+        </div>
+      </div>
+
+      <div class="habitacion">
+        <div class="info">
+          <img src="{% static 'img/Habitaciones/sfamiliarp1.jpg' %}" alt="Familiar Premium">
+          <h4>SUITE FAMILIAR PREMIUM</h4>
+          <p>Ideal para disfrutar en familia, con espacios amplios y luminosos. El escenario perfecto para vacaciones memorables, donde cada miembro encuentra su espacio de confort y lujo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}

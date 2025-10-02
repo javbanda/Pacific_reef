@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--Registro de usuario-->
+<form method="POST" action="{% url 'Registro' %}" class="row g-3 needs-validation p-4 border rounded shadow" novalidate>
+    {% csrf_token %}
+    
+    <div class="col-12 text-center">
+        <h2 class="mb-4">REGISTRO</h2>
+    </div>
+
+    <div class="col-md-6">
+        <label for="nombre" class="form-label">Nombres</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese sus nombres" required>
+        <div class="invalid-feedback">Por favor ingrese sus nombres.</div>
+    </div>
+
+    <div class="col-md-6">
+        <label for="apellido" class="form-label">Apellidos</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingrese sus apellidos" required>
+        <div class="invalid-feedback">Por favor ingrese sus apellidos.</div>
+    </div>
+
+    <div class="col-md-6">
+        <label for="correo" class="form-label">Correo Electrónico</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text">@</span>
+            <input type="email" class="form-control" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+            <div class="invalid-feedback">Por favor ingrese un correo válido.</div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label for="telefono" class="form-label">Número de Teléfono</label>
+        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono" required>
+        <div class="invalid-feedback">Por favor ingrese su número de teléfono.</div>
+    </div>
+
+    <div class="col-md-12">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su dirección" required>
+        <div class="invalid-feedback">Por favor ingrese su dirección.</div>
+    </div>
+
+    <div class="col-md-6">
+        <label for="password1" class="form-label">Contraseña</label>
+        <input type="password" name="password1" id="password1" required>
+        <div class="invalid-feedback" id="passwordError">Por favor ingrese una contraseña.</div>
+    </div>
+
+    <div class="col-md-6">
+        <label for="password2" class="form-label">Confirmar Contraseña</label>
+        <input type="password" name="password2" id="password2" required>
+        <div class="invalid-feedback">Por favor confirme su contraseña.</div>
+    </div>
+
+    <div class="col-md-6">
+        <label for="region" class="form-label">Región</label>
+        <select class="form-select" id="region" required>
+            <option selected disabled value="">Seleccione...</option>
+            <option value="arica">Región de Arica y Parinacota</option>
+            <option value="tarapaca">Región de Tarapacá</option>
+            <option value="antofagasta">Región de Antofagasta</option>
+            <option value="atacama">Región de Atacama</option>
+            <option value="coquimbo">Región de Coquimbo</option>
+            <option value="valparaiso">Región de Valparaíso</option>
+            <option value="metropolitana">Región Metropolitana</option>
+            <option value="ohiggins">Región de O'Higgins</option>
+            <option value="maule">Región del Maule</option>
+            <option value="nuble">Región del Ñuble</option>
+            <option value="biobio">Región del Biobío</option>
+            <option value="araucania">Región de La Araucanía</option>
+            <option value="rios">Región de Los Ríos</option>
+            <option value="lagos">Región de Los Lagos</option>
+            <option value="aysen">Región de Aysén</option>
+            <option value="magallanes">Región de Magallanes</option>
+        </select>
+        <div class="invalid-feedback">Por favor seleccione una región.</div>
+    </div>
+
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <label class="form-check-label" for="invalidCheck">Acepto los términos y condiciones.</label>
+            <div class="invalid-feedback">Debes aceptar los términos y condiciones.</div>
+        </div>
+    </div>
+
+    <div class="col-12 text-center mt-4">
+        <button class="btn btn-custom-primary me-2" type="submit">Registrar</button>
+        <button class="btn btn-custom-secondary" type="reset">Limpiar</button>
+    </div>
+</form>
+
+{% if form.errors %}
+    <div class="alert alert-danger">
+        {{ form.errors }}
+    </div>
+{% endif %}
+<!-- Fin del registro de usuario-->
+
+<script>
+    // Validación personalizada de Bootstrap
+    (() => {
+      'use strict'
+      const forms = document.querySelectorAll('.needs-validation')
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+    </script>
+
+{% endblock %}

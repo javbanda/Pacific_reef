@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- 🔹 Sección principal -->
+<section class="hero">
+  <img src="{% static 'img/home.jpg' %}" alt="Vista del hotel" class="hero-img">
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h2>TU ESCAPE<br>EXCLUSIVO</h2>
+    <button class="btn-descubre">DESCUBRE</button>
+  </div>
+</section>
+
+  <!-- 🔹 Caja de reserva -->
+  <section class="search-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="search-container">
+            <h2 class="search-title">Encuentra tu habitación perfecta</h2>
+            <form id="booking-form">
+              <div class="row g-3">
+                <div class="col-md-3">
+                  <div class="date-input-container">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="text" class="form-control form-control-custom" id="checkin" placeholder="Check-in">                   
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="date-input-container">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="text" class="form-control form-control-custom" id="checkout" placeholder="Check-out">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="position-relative">
+                    <i class="fas fa-user"></i>
+                    <div class="guests-dropdown" id="guestsDropdown">
+                      <span id="guestsText">1 adulto, 0 niños</span>
+                    </div>
+                    <div class="guests-modal" id="guestsModal">
+                      <div class="guest-control">
+                        <div>
+                          <strong>Adultos</strong>
+                          <p class="mb-0 small text-muted">Mayores de 18 años</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <button type="button" class="guest-btn" id="decreaseAdults">-</button>
+                          <span class="guest-count" id="adultsCount">1</span>
+                          <button type="button" class="guest-btn" id="increaseAdults">+</button>
+                        </div>
+                      </div>
+                      <div class="guest-control">
+                        <div>
+                          <strong>Niños</strong>
+                          <p class="mb-0 small text-muted">0-17 años</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <button type="button" class="guest-btn" id="decreaseChildren">-</button>
+                          <span class="guest-count" id="childrenCount">0</span>
+                          <button type="button" class="guest-btn" id="increaseChildren">+</button>
+                        </div>
+                      </div>
+                      <div class="guest-control">
+                        <div>
+                          <strong>Habitaciones</strong>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <button type="button" class="guest-btn" id="decreaseRooms">-</button>
+                          <span class="guest-count" id="roomsCount">1</span>
+                          <button type="button" class="guest-btn" id="increaseRooms">+</button>
+                        </div>
+                      </div>
+                      <button type="button" class="search-btn mt-3" id="applyGuests">Aplicar</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <button type="submit" class="search-btn w-100">
+                    <i class="fas fa-search me-2"></i> Buscar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
