@@ -4,7 +4,7 @@
 {% block content %}
 
 <!--Registro de usuario-->
-<form method="POST" action="{% url 'Registro' %}" class="row g-3 needs-validation p-4 border rounded shadow" novalidate>
+<form method="POST" action="{% url 'registro' %}" class="row g-3 needs-validation p-4 border rounded shadow" novalidate>
     {% csrf_token %}
     
     <div class="col-12 text-center">
@@ -46,13 +46,13 @@
 
     <div class="col-md-6">
         <label for="password1" class="form-label">Contraseña</label>
-        <input type="password" name="password1" id="password1" required>
+        <input type="password" class="form-control" name="password1" id="password1" placeholder="Ingrese su contraseña" required>
         <div class="invalid-feedback" id="passwordError">Por favor ingrese una contraseña.</div>
     </div>
 
     <div class="col-md-6">
         <label for="password2" class="form-label">Confirmar Contraseña</label>
-        <input type="password" name="password2" id="password2" required>
+        <input type="password" class="form-control" name="password2" id="password2" placeholder="Ingrese nuevamente su contraseña" required>
         <div class="invalid-feedback">Por favor confirme su contraseña.</div>
     </div>
 
@@ -89,8 +89,8 @@
     </div>
 
     <div class="col-12 text-center mt-4">
-        <button class="btn btn-custom-primary me-2" type="submit">Registrar</button>
-        <button class="btn btn-custom-secondary" type="reset">Limpiar</button>
+        <button class="btn-custom" type="submit">Registrar</button>
+        <button class="btn-custom" type="reset">Limpiar</button>
     </div>
 </form>
 

@@ -2,16 +2,19 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hotel Pacific Reef</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Pacific Reef</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -36,11 +39,12 @@
                             <img src="{% static 'img/logo2.png' %}" alt="Logo del Hotel" class="logo-img">
                         </a>
                     </div>
-                </div> 
+                </div>
 
                 <!-- Sección derecha - Acciones del usuario -->
                 <div class="right-section d-none d-lg-flex align-items-center">
-                    <button class="btn-custom">Iniciar Sesión</button>
+                    <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#ModalInicioSesion">Iniciar
+                        Sesión</button>
                     <button class="btn-custom">Agendar</button>
                     <select class="language-selector">
                         <option value="es">ESP</option>
@@ -51,13 +55,93 @@
         </nav>
     </header>
 
+    <!-- Modal de Inicio de Sesión -->
+    <div class="modal fade" id="ModalInicioSesion" tabindex="-1" aria-labelledby="ModalInicioSesionLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Formulario -->
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalInicioSesionLabel">Iniciar Sesión</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                        {% endfor %}
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label for="loginCorreo" class="form-label">Correo Electrónico:</label>
+                            <input type="email" class="form-control" id="loginCorreo" name="correo" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña:</label>
+                            <input type="password" class="form-control" id="loginPassword" name="password" required>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'registro' %}">
+                                    Crear una cuenta
+                                </a>
+                                <a href="#" data-bs-toggle="modal"
+                                    data-bs-target="#ModalRecuperarContrasena" data-bs-dismiss="modal">
+                                    ¿Olvidaste tu contraseña?
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Recuperar Contraseña -->
+    <div class="modal fade" id="ModalRecuperarContrasena" tabindex="-1" aria-labelledby="ModalRecuperarContrasenaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="RecuperarForm" method="POST" action="{% url 'recuperar_contrasena' %}">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalRecuperarContrasenaLabel">Recuperar Contraseña</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ingresa tu correo electrónico para recibir un enlace de recuperación.</p>
+                        <div class="mb-3">
+                            <label for="recuperarEmail" class="form-label">Correo Electrónico:</label>
+                            <input type="email" class="form-control" id="recuperarEmail" name="correo"
+                                placeholder="ejemplo@correo.com" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     {% block content %}
 
     {% endblock %}
 
     <!--Sub y Noticias-->
     <div class="sub-container">
-        <div class="container-fluid">       
+        <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-auto">
                     <p class="mb-1 fw-bold text-white">Subscribete para recibir ofertas y noticias</p>
@@ -121,7 +205,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Línea separadora y copyright -->
             <div class="row mt-4">
                 <div class="col-12">

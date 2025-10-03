@@ -30,6 +30,10 @@ urlpatterns = [
     path('proximamente/', views.proximamente, name='proximamente'),
     path('admin/', admin.site.urls),
 
+    path('login/', views.login_usuario, name='login'),
+    path('registro/', views.registro, name='registro'),
+    path('recuperar-contrasena/', views.recuperar_contrasena, name='recuperar_contrasena'),  
+
     
 
     # Autenticación

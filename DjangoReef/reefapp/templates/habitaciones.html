@@ -3,67 +3,386 @@
 
 {% block content %}
 
-  <!-- 🔹 Hero / Encabezado visual -->
-  <section class="hero-room">
-    <img src="{% static 'img/habitaciones.jpg' %}" alt="Vista de habitaciones" class="hero-img">
-    <div class="hero-content">
-      <h1 class="hero-title">NUESTRAS HABITACIONES</h1>
-      <p class="hero-subtitle">Un hotel que te hace sentir como en casa</p>
-      <button class="btn-agendar" onclick="location.href='room.html'">AGENDAR</button>
-    </div>
-  </section>
+<!-- 🔹 Hero / Encabezado visual -->
+<section class="hero-room">
+  <img src="{% static 'img/habitaciones.jpg' %}" alt="Vista de habitaciones" class="hero-img">
+  <div class="hero-content">
+    <h1 class="hero-title">NUESTRAS HABITACIONES</h1>
+    <p class="hero-subtitle">Un hotel que te hace sentir como en casa</p>
+    <button class="btn-agendar" onclick="location.href='room.html'">AGENDAR</button>
+  </div>
+</section>
 
-  <!-- 🔹 Sección de habitaciones -->
-  <!-- Turista -->
-  <section class="habitaciones">
-    <h1 class="hero-title2">Clase Turista</h1>
-    <div class="habitaciones-grid">
-      <div class="habitacion">
-        <div class="info">
-          <img src="{% static 'img/Habitaciones/hindiv1.jpg' %}" alt="Habitación individuar">
-          <h4>HABITACIÓN INDIVIDUAL</h4>
-          <p>Tu refugio personal en la ciudad. Diseñada para el viajero moderno que busca comodidad y funcionalidad en un espacio acogedor.</p>
+<!-- 🔹 Sección de habitaciones -->
+<!-- Turista -->
+<section class="habitaciones">
+  <h1 class="hero-title2">Clase Turista</h1>
+  <div class="habitaciones-grid">
+    <!-- Habitación Individual -->
+    <div class="habitacion" data-bs-toggle="modal" data-bs-target="#modalIndividual">
+      <div class="info">
+        <img src="{% static 'img/Habitaciones/hindiv1.jpg' %}" alt="Habitación individual">
+        <h4>HABITACIÓN INDIVIDUAL</h4>
+        <p>Tu refugio personal en la ciudad. Diseñada para el viajero moderno que busca comodidad y funcionalidad en un
+          espacio acogedor.</p>
+      </div>
+    </div>
+
+    <!-- Habitación Doble -->
+    <div class="habitacion" data-bs-toggle="modal" data-bs-target="#modalDoble">
+      <div class="info">
+        <img src="{% static 'img/Habitaciones/hdoble1.jpg' %}" alt="Habitación doble">
+        <h4>HABITACIÓN DOBLE</h4>
+        <p>El equilibrio perfecto entre confort y precio. Ideal para parejas o viajeros que buscan un espacio cómodo con todas las comodidades esenciales.</p>
+      </div>
+    </div>
+
+    <!-- Habitación Familiar -->
+    <div class="habitacion" data-bs-toggle="modal" data-bs-target="#modalFamiliar">
+      <div class="info">
+        <img src="{% static 'img/Habitaciones/hfamiliar1.jpg' %}" alt="Habitación familiar">
+        <h4>HABITACIÓN FAMILIAR</h4>
+        <p>Espacios que unen. Diseñada para familias que valoran la comodidad y el tiempo juntos, con el espacio perfecto para crear recuerdos inolvidables.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de habitación individual -->
+<div class="modal fade" id="modalIndividual" tabindex="-1" aria-labelledby="modalIndividualLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalIndividualLabel">HABITACIÓN INDIVIDUAL</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Carrusel -->
+        <div id="carouselIndividual" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'img/Habitaciones/hindiv1.jpg' %}" class="d-block w-100"
+                alt="Habitación individual 1">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/hindiv2.jpg' %}" class="d-block w-100"
+                alt="Habitación individual 2">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/baño.jpg' %}" class="d-block w-100" alt="Habitación individual 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndividual" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselIndividual" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+
+        <!-- Información -->
+        <div class="mt-4">
+          <h5>Descripción</h5>
+          <p>Tu refugio personal en la ciudad. Diseñada para el viajero moderno que busca comodidad y funcionalidad en
+            un espacio acogedor.</p>
+
+          <h5>Equipamiento</h5>
+          <ul>
+            <li>Cama individual premium</li>
+            <li>Baño privado con ducha</li>
+            <li>TV LED 32" con cable</li>
+            <li>Escritorio de trabajo</li>
+            <li>WiFi gratuito</li>
+            <li>Aire acondicionado</li>
+            <li>Caja de seguridad</li>
+          </ul>
+
+          <h5>Precio</h5>
+          <p><strong>$45.000 por noche</strong></p>
         </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-      <div class="habitacion">
-        <div class="info">
-          <img src="{% static 'img/Habitaciones/hdoble1.jpg' %}" alt="Habitación doble">
-          <h4>HABITACIÓN DOBLE</h4>
+<!-- Modal Habitación Doble -->
+<div class="modal fade" id="modalDoble" tabindex="-1" aria-labelledby="modalDobleLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDobleLabel">HABITACIÓN DOBLE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Carrusel Doble -->
+        <div id="carouselDoble" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'img/Habitaciones/hdoble1.jpg' %}" class="d-block w-100" alt="Habitación doble 1">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/hdoble2.jpg' %}" class="d-block w-100" alt="Habitación doble 2">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/baño.jpg' %}" class="d-block w-100" alt="Habitación doble 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselDoble" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselDoble" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+        
+        <!-- Información Doble -->
+        <div class="mt-4">
+          <h5>Descripción</h5>
           <p>El equilibrio perfecto entre confort y precio. Ideal para parejas o viajeros que buscan un espacio cómodo con todas las comodidades esenciales.</p>
+          
+          <h5>Equipamiento</h5>
+          <ul>
+            <li>1 cama doble queen</li>
+            <li>Baño privado con ducha</li>
+            <li>TV LED 40" Smart TV</li>
+            <li>Mesa de trabajo</li>
+            <li>WiFi gratuito high speed</li>
+            <li>Aire acondicionado</li>
+            <li>Mini nevera</li>
+            <li>Caja de seguridad digital</li>
+          </ul>
+          
+          <h5>Precio</h5>
+          <p><strong>$65.000 por noche</strong></p>
         </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-      <div class="habitacion">
-        <div class="info">
-          <img src="{% static 'img/Habitaciones/hfamiliar1.jpg' %}" alt="Habitación familiar">
-          <h4>HABITACIÓN FAMILIAR</h4>
+<!-- Modal Habitación Familiar -->
+<div class="modal fade" id="modalFamiliar" tabindex="-1" aria-labelledby="modalFamiliarLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalFamiliarLabel">HABITACIÓN FAMILIAR</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Carrusel Familiar -->
+        <div id="carouselFamiliar" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'img/Habitaciones/hfamiliar1.jpg' %}" class="d-block w-100" alt="Habitación familiar 1">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/hfamiliar2.jpg' %}" class="d-block w-100" alt="Habitación familiar 2">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/baño.jpg' %}" class="d-block w-100" alt="Habitación familiar 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselFamiliar" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselFamiliar" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+        
+        <!-- Información familiar -->
+        <div class="mt-4">
+          <h5>Descripción</h5>
           <p>Espacios que unen. Diseñada para familias que valoran la comodidad y el tiempo juntos, con el espacio perfecto para crear recuerdos inolvidables.</p>
+          
+          <h5>Equipamiento</h5>
+          <ul>
+            <li>2 camas dobles full size</li>
+            <li>Baño privado con bañera/ducha</li>
+            <li>TV LED 43" Smart TV</li>
+            <li>Mesa de reuniones familiar</li>
+            <li>WiFi gratuito high speed</li>
+            <li>Aire acondicionado</li>
+            <li>Mini nevera</li>
+            <li>Caja de seguridad digital</li>
+            <li>Sofá cama adicional</li>
+          </ul>
+          
+          <h5>Precio</h5>
+          <p><strong>$85.000 por noche</strong></p>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- Premium -->
-  <section class="habitaciones">
-    <h1 class="hero-title2">Clase Premium</h1>    
-    <div class="habitaciones-grid">
-      <div class="habitacion">
-        <div class="info">
-          <img src="{% static 'img/Habitaciones/sdoblep1.jpg' %}" alt="Doble Premium">
-          <h4>SUITE DOBLE PREMIUM</h4>
-          <p>Elegancia y sofisticación con vista al mar. Experimenta el lujo contemporáneo en un espacio diseñado para el descanso y la desconexión total.</p>
-        </div>
-      </div>
+<!-- Premium -->
+<section class="habitaciones">
+  <h1 class="hero-title2">Clase Premium</h1>
+  <div class="habitaciones-grid">
 
-      <div class="habitacion">
-        <div class="info">
-          <img src="{% static 'img/Habitaciones/sfamiliarp1.jpg' %}" alt="Familiar Premium">
-          <h4>SUITE FAMILIAR PREMIUM</h4>
-          <p>Ideal para disfrutar en familia, con espacios amplios y luminosos. El escenario perfecto para vacaciones memorables, donde cada miembro encuentra su espacio de confort y lujo.</p>
-        </div>
+    <!-- Suite Doble Premium -->
+    <div class="habitacion" data-bs-toggle="modal" data-bs-target="#modalDoblePremium">
+      <div class="info">
+        <img src="{% static 'img/Habitaciones/sdoblep1.jpg' %}" alt="Doble Premium">
+        <h4>SUITE DOBLE PREMIUM</h4>
+        <p>Elegancia y sofisticación con vista al mar. Experimenta el lujo contemporáneo en un espacio diseñado para el
+          descanso y la desconexión total.</p>
       </div>
     </div>
-  </section>
 
-  {% endblock %}
+    <!-- Suite Familiar Premium -->
+    <div class="habitacion" data-bs-toggle="modal" data-bs-target="#modalFamiliarPremium">
+      <div class="info">
+        <img src="{% static 'img/Habitaciones/sfamiliarp1.jpg' %}" alt="Familiar Premium">
+        <h4>SUITE FAMILIAR PREMIUM</h4>
+        <p>Ideal para disfrutar en familia, con espacios amplios y luminosos. El escenario perfecto para vacaciones
+          memorables, donde cada miembro encuentra su espacio de confort y lujo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de suite doble premium -->
+<div class="modal fade" id="modalDoblePremium" tabindex="-1" aria-labelledby="modalDoblePremiumLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDoblePremiumLabel">SUITE DOBLE PREMIUM</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Carrusel -->
+        <div id="carouselSuiteDoble" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'img/Habitaciones/sdoblep1.jpg' %}" class="d-block w-100" alt="Suite doble premium 1">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/sdoblep2.jpg' %}" class="d-block w-100" alt="Suite doble premium 2">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/sdoblep3.jpg' %}" class="d-block w-100" alt="Suite doble premium 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselSuiteDoble" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselSuiteDoble" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+
+        <!-- Información -->
+        <div class="mt-4">
+          <h5>Descripción</h5>
+          <p>Elegancia y sofisticación con vista al mar. Experimenta el lujo contemporáneo en un espacio diseñado para el
+          descanso y la desconexión total.</p>
+
+          <h5>Equipamiento</h5>
+          <ul>
+            <li>Cama king size premium</li>
+            <li>Baño de lujo con jacuzzi</li>
+            <li>TV LED 55" 4K Smart TV</li>
+            <li>Sala de estar con sofá</li>
+            <li>Minibar surtido</li>
+            <li>WiFi premium ultra rápido</li>
+            <li>Aire acondicionado central</li>
+            <li>Caja de seguridad digital</li>
+            <li>Nespresso coffee machine</li>
+            <li>Ropa de cama algodón egipcio</li>
+          </ul>
+
+          <h5>Precio</h5>
+          <p><strong>$120.000 por noche</strong></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de suite familiar premium -->
+<div class="modal fade" id="modalFamiliarPremium" tabindex="-1" aria-labelledby="modalFamiliarPremiumLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalFamiliarPremiumLabel">SUITE FAMILIAR PREMIUM</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Carrusel -->
+        <div id="carouselSuiteFamiliar" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'img/Habitaciones/sfamiliarp1.jpg' %}" class="d-block w-100" alt="Suite familiar premium 1">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/sfamiliarp2.jpg' %}" class="d-block w-100" alt="Suite familiar premium 2">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/Habitaciones/sfamiliarp3.jpg' %}" class="d-block w-100" alt="Suite familiar premium 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselSuiteFamiliar" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselSuiteFamiliar" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+
+        <!-- Información -->
+        <div class="mt-4">
+          <h5>Descripción</h5>
+          <p>Ideal para disfrutar en familia, con espacios amplios y luminosos. El escenario perfecto para vacaciones
+          memorables, donde cada miembro encuentra su espacio de confort y lujo.</p>
+
+          <h5>Equipamiento</h5>
+          <ul>
+            <li>1 dormitorio con cama king size</li>
+            <li>2º dormitorio con 2 camas individuales</li>
+            <li>2 baños completos (1 con jacuzzi)</li>
+            <li>TV LED 65" 4K en living + TV 43" en cada dormitorio</li>
+            <li>Sala de estar amplia</li>
+            <li>Minibar premium surtido</li>
+            <li>WiFi premium ultra rápido</li>
+            <li>Aire acondicionado central</li>
+            <li>Caja de seguridad digital</li>
+            <li>Nespresso coffee machine</li>
+            <li>Ropa de cama algodón egipcio</li>
+            <li>Amenities de bienvenida</li>
+          </ul>
+
+          <h5>Precio</h5>
+          <p><strong>$160.000 por noche</strong></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
