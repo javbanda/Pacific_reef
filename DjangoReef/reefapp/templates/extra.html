@@ -1,0 +1,190 @@
+from reefapp.models import Rol, CategoriaHabitacion, CaracteristicaHabitacion, Habitacion
+
+# Crear roles
+Rol.objects.get_or_create(nombre='Administrador')
+Rol.objects.get_or_create(nombre='Recepcionista') 
+Rol.objects.get_or_create(nombre='Cliente')
+print("✅ Roles creados")
+
+# Crear categorías
+cat_turista, _ = CategoriaHabitacion.objects.get_or_create(
+    nombre='Turista', 
+    descripcion='Habitaciones económicas con comodidades básicas'
+)
+cat_premium, _ = CategoriaHabitacion.objects.get_or_create(
+    nombre='Premium', 
+    descripcion='Habitaciones de lujo con amenities exclusivas'
+)
+print("✅ Categorías creadas")
+
+# Crear características
+caracteristicas = ['Cama Individual', 'Cama Doble', 'Cama King', 'Baño privado', 'Jacuzzi', 'Minibar', 'Aire Acondicionado', 'Wifi', 'Caja de Seguridad', 'TV Cable', 'Nespresso Coffee Machine']
+for carac in caracteristicas:
+    CaracteristicaHabitacion.objects.get_or_create(nombre=carac)
+print("✅ Características creadas")
+
+# Crear habitaciones de ejemplo
+habitaciones_data = [
+    {'numero': '101', 'piso': 1, 'categoria': cat_turista, 'tipo': 'individual', 
+     'precio_base': 45000, 'capacidad_adultos': 1, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación individual económica, ideal para viajeros solos'},
+    
+    {'numero': '102', 'piso': 1, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '103', 'piso': 1, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '104', 'piso': 1, 'categoria': cat_turista, 'tipo': 'individual', 
+     'precio_base': 45000, 'capacidad_adultos': 1, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación individual económica, ideal para viajeros solos'},
+    
+    {'numero': '105', 'piso': 1, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '106', 'piso': 1, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '201', 'piso': 2, 'categoria': cat_turista, 'tipo': 'individual', 
+     'precio_base': 45000, 'capacidad_adultos': 1, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación individual económica, ideal para viajeros solos'},
+    
+    {'numero': '202', 'piso': 2, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '203', 'piso': 2, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '204', 'piso': 2, 'categoria': cat_turista, 'tipo': 'individual', 
+     'precio_base': 45000, 'capacidad_adultos': 1, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación individual económica, ideal para viajeros solos'},
+    
+    {'numero': '205', 'piso': 2, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '206', 'piso': 2, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '301', 'piso': 3, 'categoria': cat_turista, 'tipo': 'individual', 
+     'precio_base': 45000, 'capacidad_adultos': 1, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación individual económica, ideal para viajeros solos'},
+    
+    {'numero': '302', 'piso': 3, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '303', 'piso': 3, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '304', 'piso': 3, 'categoria': cat_turista, 'tipo': 'individual', 
+     'precio_base': 45000, 'capacidad_adultos': 1, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación individual económica, ideal para viajeros solos'},
+    
+    {'numero': '305', 'piso': 3, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '306', 'piso': 3, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '401', 'piso': 4, 'categoria': cat_turista, 'tipo': 'individual', 
+     'precio_base': 45000, 'capacidad_adultos': 1, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación individual económica, ideal para viajeros solos'},
+    
+    {'numero': '402', 'piso': 4, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '403', 'piso': 4, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '404', 'piso': 4, 'categoria': cat_turista, 'tipo': 'individual', 
+     'precio_base': 45000, 'capacidad_adultos': 1, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación individual económica, ideal para viajeros solos'},
+    
+    {'numero': '405', 'piso': 4, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '406', 'piso': 4, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '501', 'piso': 5, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '502', 'piso': 5, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '503', 'piso': 5, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '504', 'piso': 5, 'categoria': cat_turista, 'tipo': 'familiar', 
+     'precio_base': 85000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Habitación familiar económica, ideal para viajes junto al nucleo familiar'},
+
+    {'numero': '505', 'piso': 5, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},
+
+    {'numero': '506', 'piso': 5, 'categoria': cat_turista, 'tipo': 'doble', 
+     'precio_base': 65000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Habitación doble para parejas, con cama queen size'},  
+     
+    {'numero': '601', 'piso': 6, 'categoria': cat_premium, 'tipo': 'suiteD', 
+     'precio_base': 120000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Suite premium, ideal para parejas'},
+    
+    {'numero': '602', 'piso': 6, 'categoria': cat_premium, 'tipo': 'suiteF', 
+     'precio_base': 160000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Suite familiar de lujo, amplia y cómoda para toda la familia'},
+
+    {'numero': '603', 'piso': 6, 'categoria': cat_premium, 'tipo': 'suiteD', 
+     'precio_base': 120000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Suite premium, ideal para parejas'},
+    
+    {'numero': '604', 'piso': 6, 'categoria': cat_premium, 'tipo': 'suiteF', 
+     'precio_base': 160000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Suite familiar de lujo, amplia y cómoda para toda la familia'},
+
+    {'numero': '701', 'piso': 6, 'categoria': cat_premium, 'tipo': 'suiteD', 
+     'precio_base': 120000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Suite premium, ideal para parejas'},
+    
+    {'numero': '702', 'piso': 6, 'categoria': cat_premium, 'tipo': 'suiteF', 
+     'precio_base': 160000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Suite familiar de lujo, amplia y cómoda para toda la familia'},
+
+    {'numero': '703', 'piso': 6, 'categoria': cat_premium, 'tipo': 'suiteD', 
+     'precio_base': 120000, 'capacidad_adultos': 2, 'capacidad_ninos': 0,
+     'descripcion': 'Suite premium, ideal para parejas'},
+    
+    {'numero': '704', 'piso': 6, 'categoria': cat_premium, 'tipo': 'suiteF', 
+     'precio_base': 160000, 'capacidad_adultos': 2, 'capacidad_ninos': 2,
+     'descripcion': 'Suite familiar de lujo, amplia y cómoda para toda la familia'},
+]
+
+for hab_data in habitaciones_data:
+    habitacion, created = Habitacion.objects.get_or_create(
+        numero=hab_data['numero'],
+        defaults=hab_data
+    )
+    if created:
+        print(f"✅ Habitación {hab_data['numero']} creada")
+
+print("🎉 ¡Todos los datos iniciales creados exitosamente!")
+exit()

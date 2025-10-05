@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- 🔹 Sección del Perfil del Usuario(Administrador) -->
+<!-- Perfil de Administrador -->
+<div class="container mt-4">
+    <h2>Panel de Administración</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Bienvenido, {{ usuario.nombre }}</h5>
+            <p>Estás en el panel de administración.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Habitaciones</h5>
+                            <p class="card-text">Gestionar habitaciones</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-white bg-success mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Reservas</h5>
+                            <p class="card-text">Gestionar todas las reservas</p>
+                            <a href="{% url 'listar_reservas' %}" class="btn btn-light btn-sm">
+                                Ver Reservas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-white bg-warning mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Usuarios</h5>
+                            <p class="card-text">Gestionar usuarios</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

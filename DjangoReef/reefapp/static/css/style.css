@@ -70,6 +70,8 @@ body {
     font-weight: 500;
     margin: 0 5px;
     transition: all 0.3s;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-custom:hover {
@@ -405,11 +407,11 @@ body {
         margin: 20px;
         padding: 30px 20px;
     }
-    
+
     .about-card h2 {
         font-size: 1.8em;
     }
-    
+
     .about-card h3 {
         font-size: 1.2em;
     }
@@ -461,7 +463,7 @@ a {
     letter-spacing: 2px;
     margin-bottom: 10px;
     font-family: 'Playfair Display', serif;
-    color:#ffffff;
+    color: #ffffff;
 }
 
 .hero-title2 {
@@ -553,10 +555,6 @@ a {
     margin-top: 25px;
     cursor: pointer;
 }
-
-/* Modal Habitaciones */
-
-
 
 /* === SPA === */
 .spaa {
@@ -682,17 +680,272 @@ a {
 
 /* === MODAL HABITACIONES === */
 .habitacion {
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .habitacion:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-item img {
-  height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+/* === BUSCAR RESERVA === */
+
+
+.search-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.search-title {
+    color: #2d3748;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.date-input-container {
+    position: relative;
+}
+
+.date-input-container i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+    z-index: 3;
+}
+
+.form-control-custom {
+    padding-left: 45px;
+    height: 50px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-control-custom:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Estilos para el selector de huéspedes */
+.position-relative {
+    position: relative;
+}
+
+.guests-dropdown {
+    height: 50px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 45px;
+    cursor: pointer;
+    background: white;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.guests-dropdown:hover {
+    border-color: #667eea;
+}
+
+.guests-dropdown i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+}
+
+.guests-modal {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    margin-top: 5px;
+}
+
+.guests-modal.show {
+    display: block;
+}
+
+.guest-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.guest-btn {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.guest-btn:hover:not(:disabled) {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.guest-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.guest-count {
+    margin: 0 15px;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Estilos para Flatpickr */
+.flatpickr-calendar {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.flatpickr-day.selected {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+
+
+/* === RESERVA === */
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #38a169;
+}
+
+.search-summary {
+    background: linear-gradient(rgba(3, 73, 58, 0.8), rgba(3, 73, 58, 0.9));
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.room-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+}
+
+.room-image {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.room-features {
+    list-style: none;
+    padding: 0;
+}
+
+.room-features li {
+    padding: 5px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.room-features li:last-child {
+    border-bottom: none;
+}
+
+.room-features i {
+    color: var(--success-color);
+    margin-right: 10px;
+}
+
+.price-section {
+    text-align: right;
+}
+
+.price-amount {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.price-period {
+    color: #6c757d;
+}
+
+.btn-reserve {
+    background: linear-gradient(rgba(3, 73, 58, 0.8), rgba(3, 73, 58, 0.9));
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-reserve:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.filter-sidebar {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    height: fit-content;
+}
+
+.availability-badge {
+    background: var(--success-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+.room-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
 }

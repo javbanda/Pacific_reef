@@ -28,15 +28,21 @@ urlpatterns = [
     path('spa/', views.spa, name='spa'),
     path('restaurante/', views.restaurante, name='restaurante'),
     path('proximamente/', views.proximamente, name='proximamente'),
+    path('reserva/', views.reserva_view, name='reserva'),
     path('admin/', admin.site.urls),
 
     path('login/', views.login_usuario, name='login'),
     path('registro/', views.registro, name='registro'),
+    path('logout/', views.logout_usuario, name='logout'),
     path('recuperar-contrasena/', views.recuperar_contrasena, name='recuperar_contrasena'),  
 
-    
+    path('perfil/', views.perfil, name='perfil'),
+    path('perfil/admin/', views.perfilAdmin, name='perfilAdmin'),   
 
-    # Autenticación
-
+    path('api/habitaciones-disponibles/', views.api_habitaciones_disponibles, name='api_habitaciones_disponibles'),
+    path('reservar/<int:habitacion_id>/', views.crear_reserva_view, name='crear_reserva'),
+    path('reserva/confirmacion/<int:reserva_id>/', views.confirmacion_reserva, name='confirmacion_reserva'),
+    path('listar_reservas/', views.listar_reservas, name='listar_reservas'),
+    path('reservas/eliminar/<int:reserva_id>/', views.eliminar_reserva, name='eliminar_reserva'), 
 
 ]

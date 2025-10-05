@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- 🔹 Sección del Perfil del Usuario(Cliente) -->
+<!-- Perfil de Usuario -->
+<div class="container mt-4">
+    <h2>Mi Perfil</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Información Personal</h5>
+            <p><strong>Nombre:</strong> {{ usuario.nombre }} {{ usuario.apellido }}</p>
+            <p><strong>Email:</strong> {{ usuario.correo }}</p>
+            <p><strong>Teléfono:</strong> {{ usuario.telefono|default:"No proporcionado" }}</p>
+            <p><strong>Dirección:</strong> {{ usuario.direccion|default:"No proporcionada" }}</p>
+        </div>
+    </div>
+
+    {% if reservas %}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Mis Reservas</h5>
+            <div class="list-group">
+                {% for reserva in reservas %}
+                <div class="list-group-item">
+                    <h6>Reserva {{ reserva.codigo_reserva }}</h6>
+                    <p>Habitación: {{ reserva.habitacion.numero }} - {{ reserva.habitacion.get_tipo_display }}</p>
+                    <p>Check-in: {{ reserva.fecha_checkin }} | Check-out: {{ reserva.fecha_checkout }}</p>
+                    <p>Estado: {{ reserva.get_estado_display }}</p>
+                    <p>Total: ${{ reserva.total }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info mt-4">
+        No tienes reservas aún. <a href="{% url 'home' %}#agendar-section">¡Haz tu primera reserva!</a>
+    </div>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- 🔹 Sección de confirmacion reserva -->
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Tarjeta de confirmación -->
+            <div class="card border-success">
+                <div class="card-header bg-success text-white text-center">
+                    <i class="fas fa-check-circle fa-2x mb-2"></i>
+                    <h3 class="mb-0">¡Reserva Confirmada!</h3>
+                </div>
+                
+                <div class="card-body">
+                    <!-- Información de la reserva -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5 class="text-success">
+                                <i class="fas fa-receipt me-2"></i>
+                                Número de Reserva: <strong>#{{ reserva.id }}</strong>
+                            </h5>
+                            <p class="text-muted">Fecha de reserva: {{ reserva.fecha_creacion|date:"d/m/Y H:i" }}</p>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <span class="badge bg-success fs-6">
+                                <i class="fas fa-check me-1"></i>
+                                {{ reserva.get_estado_display }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Información del huésped -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">
+                                        <i class="fas fa-user me-2"></i>Información del Huésped
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-1"><strong>Nombre:</strong> {{ reserva.cliente.get_full_name }}</p>
+                                    <p class="mb-1"><strong>Email:</strong> {{ reserva.cliente.email }}</p>
+                                    {% if reserva.cliente.telefono %}
+                                    <p class="mb-0"><strong>Teléfono:</strong> {{ reserva.cliente.telefono }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Información de la habitación -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">
+                                        <i class="fas fa-bed me-2"></i>Información de la Habitación
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-1"><strong>Habitación:</strong> {{ reserva.habitacion.numero }}</p>
+                                    <p class="mb-1"><strong>Tipo:</strong> {{ reserva.habitacion.get_tipo_display }}</p>
+                                    <p class="mb-1"><strong>Categoría:</strong> {{ reserva.habitacion.get_categoria_display }}</p>
+                                    <p class="mb-0"><strong>Capacidad:</strong> {{ reserva.habitacion.capacidad }} persona{{ reserva.habitacion.capacidad|pluralize }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fechas de estadía -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">
+                                <i class="fas fa-calendar-alt me-2"></i>Fechas de Estadía
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-md-6">
+                                    <h5 class="text-primary">Check-in</h5>
+                                    <p class="fs-4 mb-0">{{ reserva.fecha_inicio|date:"d/m/Y" }}</p>
+                                    <small class="text-muted">Desde las 15:00 hrs</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-primary">Check-out</h5>
+                                    <p class="fs-4 mb-0">{{ reserva.fecha_fin|date:"d/m/Y" }}</p>
+                                    <small class="text-muted">Hasta las 12:00 hrs</small>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <p class="mb-0">
+                                    <strong>Días de estadía:</strong> 
+                                    <span class="badge bg-info fs-6">{{ reserva.dias_estadia }} día{{ reserva.dias_estadia|pluralize }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resumen de pago -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">
+                                <i class="fas fa-credit-card me-2"></i>Resumen de Pago
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-8">
+                                    <p class="mb-2">Tarifa por noche ({{ reserva.dias_estadia }} noche{{ reserva.dias_estadia|pluralize }})</p>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <p class="mb-2">${{ reserva.habitacion.precio|floatformat:0 }} x {{ reserva.dias_estadia }}</p>
+                                </div>
+                            </div>
+                            
+                            {% if reserva.impuestos %}
+                            <div class="row">
+                                <div class="col-8">
+                                    <p class="mb-2">Impuestos y tarifas</p>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <p class="mb-2">${{ reserva.impuestos|floatformat:0 }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            <hr>
+                            <div class="row">
+                                <div class="col-8">
+                                    <h5 class="mb-0"><strong>Total</strong></h5>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <h5 class="mb-0 text-success">
+                                        <strong>${{ reserva.total|floatformat:0 }}</strong>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información importante -->
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading">
+                            <i class="fas fa-info-circle me-2"></i>Información Importante
+                        </h6>
+                        <ul class="mb-0">
+                            <li>Presenta este número de reserva (#{{ reserva.id }}) al check-in</li>
+                            <li>El check-in es a partir de las 15:00 hrs</li>
+                            <li>El check-out debe realizarse antes de las 12:00 hrs</li>
+                            <li>Para modificaciones o cancelaciones, contacta con recepción</li>
+                        </ul>
+                    </div>
+
+                    <!-- Botones de acción -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                        <a href="{% url 'home' %}" class="btn btn-outline-primary me-md-2">
+                            <i class="fas fa-home me-2"></i>Volver al Inicio
+                        </a>
+                        <button onclick="window.print()" class="btn btn-outline-secondary me-md-2">
+                            <i class="fas fa-print me-2"></i>Imprimir Confirmación
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    @media print {
+        .btn {
+            display: none !important;
+        }
+        .card-header.bg-success {
+            background-color: #198754 !important;
+            color: white !important;
+        }
+    }
+    
+    .card {
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+    
+    .border-success {
+        border-width: 2px !important;
+    }
+</style>
+{% endblock %}

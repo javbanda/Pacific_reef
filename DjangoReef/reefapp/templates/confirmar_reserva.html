@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- 🔹 Sección de confirmar reserva -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-body text-center p-5">
+                    <!-- Icono de éxito -->
+                    <div class="mb-4">
+                        <div class="success-icon bg-success rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 80px; height: 80px;">
+                            <i class="fas fa-check text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-success mb-3">¡Reserva Confirmada!</h2>
+                    <p class="lead text-muted mb-4">
+                        Tu reserva ha sido procesada exitosamente. Te hemos enviado un correo de confirmación.
+                    </p>
+                    
+                    <!-- Detalles de la reserva -->
+                    <div class="card bg-light mb-4">
+                        <div class="card-body text-start">
+                            <h5 class="card-title mb-3">Detalles de tu reserva</h5>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <strong>Código de reserva:</strong><br>
+                                    <span class="badge bg-primary fs-6">{{ reserva.codigo_reserva }}</span>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <strong>Habitación:</strong><br>
+                                    {{ reserva.habitacion.numero }} - {{ reserva.habitacion.get_tipo_display }}
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <strong>Check-in:</strong><br>
+                                    {{ reserva.fecha_checkin|date:"d M Y" }}
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <strong>Check-out:</strong><br>
+                                    {{ reserva.fecha_checkout|date:"d M Y" }}
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <strong>Huéspedes:</strong><br>
+                                    {{ reserva.adultos }} adulto{{ reserva.adultos|pluralize }}
+                                    {% if reserva.ninos > 0 %}
+                                        + {{ reserva.ninos }} niño{{ reserva.ninos|pluralize }}
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <strong>Total:</strong><br>
+                                    <h5 class="text-success mb-0">${{ reserva.total|floatformat:0 }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Información importante -->
+                    <div class="alert alert-info mb-4">
+                        <h6><i class="fas fa-info-circle me-2"></i>Información importante</h6>
+                        <ul class="list-unstyled mb-0 small">
+                            <li>• Check-in: Desde las 15:00 hrs</li>
+                            <li>• Check-out: Hasta las 12:00 hrs</li>
+                            <li>• Presenta tu código de reserva y documento de identidad al llegar</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Botones de acción -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-center">
+                        <a href="{% url 'perfil' %}" class="btn btn-primary me-md-2">
+                            <i class="fas fa-calendar-check me-2"></i>Ver mis reservas
+                        </a>
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-home me-2"></i>Volver al inicio
+                        </a>
+                    </div>
+                    
+                    <!-- Descargar comprobante -->
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-outline-success btn-sm">
+                            <i class="fas fa-download me-2"></i>Descargar comprobante
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- 🔹 Sección de listar las reservas -->
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>
+            <i class="fas fa-list me-2"></i>Gestión de Reservas
+        </h2>
+        <a href="{% url 'perfilAdmin' %}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Volver al Panel
+        </a>
+    </div>
+
+    <!-- Mostrar mensajes -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+            <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-triangle{% endif %} me-2"></i>
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+                <i class="fas fa-calendar-alt me-2"></i>Lista de Reservas
+            </h5>
+        </div>
+        <div class="card-body">
+            {% if reservas %}
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Habitación</th>
+                            <th>Check-in</th>
+                            <th>Check-out</th>
+                            <th>Estado</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reserva in reservas %}
+                        <tr>
+                            <td>
+                                <strong>#{{ reserva.id }}</strong>
+                                <br>
+                                <small class="text-muted">{{ reserva.codigo_reserva }}</small>
+                            </td>
+                            <td>
+                                {% if reserva.cliente.get_full_name %}
+                                    {{ reserva.cliente.get_full_name }}
+                                {% else %}
+                                    {{ reserva.cliente.username }}
+                                {% endif %}
+                                <br>
+                                <small class="text-muted">{{ reserva.cliente.email }}</small>
+                            </td>
+                            <td>
+                                Hab. {{ reserva.habitacion.numero }}
+                                <br>
+                                <small class="text-muted">{{ reserva.habitacion.get_tipo_display }}</small>
+                            </td>
+                            <td>{{ reserva.fecha_checkin|date:"d/m/Y" }}</td>
+                            <td>{{ reserva.fecha_checkout|date:"d/m/Y" }}</td>
+                            <td>
+                                <span class="badge 
+                                    {% if reserva.estado == 'confirmada' %}bg-success
+                                    {% elif reserva.estado == 'pendiente' %}bg-warning
+                                    {% elif reserva.estado == 'cancelada' %}bg-danger
+                                    {% else %}bg-secondary{% endif %}">
+                                    {{ reserva.estado|title }}
+                                </span>
+                            </td>
+                            <td>
+                                <strong>${{ reserva.total_estadia|floatformat:0 }}</strong>
+                                <br>
+                                <small class="text-success">Pagado: ${{ reserva.pago_reserva|floatformat:0 }}</small>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="#" class="btn btn-info" title="Ver detalles">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-warning" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-danger" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#deleteModal{{ reserva.id }}"
+                                            title="Eliminar">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Modal de eliminación -->
+                                <div class="modal fade" id="deleteModal{{ reserva.id }}" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Confirmar Eliminación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¿Estás seguro de que quieres eliminar la reserva <strong>#{{ reserva.id }}</strong>?</p>
+                                                <div class="alert alert-warning">
+                                                    <i class="fas fa-exclamation-triangle"></i>
+                                                    <strong>Esta acción no se puede deshacer.</strong>
+                                                </div>
+                                                <p><strong>Usuario:</strong> 
+                                                    {% if reserva.cliente.get_full_name %}
+                                                        {{ reserva.cliente.get_full_name }}
+                                                    {% else %}
+                                                        {{ reserva.cliente.username }}
+                                                    {% endif %}
+                                                </p>
+                                                <p><strong>Habitación:</strong> {{ reserva.habitacion.numero }}</p>
+                                                <p><strong>Fechas:</strong> {{ reserva.fecha_checkin|date:"d/m/Y" }} - {{ reserva.fecha_checkout|date:"d/m/Y" }}</p>
+                                                <p><strong>Código:</strong> {{ reserva.codigo_reserva }}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <form method="POST" action="{% url 'eliminar_reserva' reserva.id_reserva %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fas fa-trash me-1"></i>Eliminar Reserva
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body text-center">
+                            <h4>{{ reservas.count }}</h4>
+                            <p class="mb-0">Total Reservas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-success">
+                        <div class="card-body text-center">
+                            <h4>{{ reservas_confirmadas|default:reservas.count }}</h4>
+                            <p class="mb-0">Confirmadas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-warning">
+                        <div class="card-body text-center">
+                            <h4>{{ reservas_pendientes|default:0 }}</h4>
+                            <p class="mb-0">Pendientes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-info">
+                        <div class="card-body text-center">
+                            <h4>${{ total_ingresos|default:0|floatformat:0 }}</h4>
+                            <p class="mb-0">Ingresos Totales</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% else %}
+            <div class="text-center py-5">
+                <i class="fas fa-calendar-times fa-4x text-muted mb-3"></i>
+                <h4 class="text-muted">No hay reservas registradas</h4>
+                <p class="text-muted">Cuando los usuarios hagan reservas, aparecerán aquí.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

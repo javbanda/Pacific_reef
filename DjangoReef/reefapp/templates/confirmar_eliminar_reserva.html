@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- 🔹 Sección de confirmacion para eliminar reserva -->
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Confirmar Eliminación</h4>
+                </div>
+                <div class="card-body">
+                    <p>¿Estás seguro de que quieres eliminar la siguiente reserva?</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Reserva #{{ reserva.id }}</strong><br>
+                        <strong>Usuario:</strong> {{ reserva.usuario.get_full_name }}<br>
+                        <strong>Habitación:</strong> {{ reserva.habitacion.numero }}<br>
+                        <strong>Fechas:</strong> {{ reserva.fecha_inicio|date:"d/m/Y" }} - {{ reserva.fecha_fin|date:"d/m/Y" }}<br>
+                        <strong>Estado:</strong> {{ reserva.get_estado_display }}
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Esta acción no se puede deshacer.
+                    </div>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+                            <a href="{% url 'listar_reservas' %}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

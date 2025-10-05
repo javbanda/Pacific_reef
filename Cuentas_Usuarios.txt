@@ -1,0 +1,7 @@
+1.-Administrador
+Email:PacificReefADM@gmail.com
+Clave:PacificClave1!
+
+2.-Cliente
+Email:Daniela.P@gmail.com
+Clave:DanielaClave1!
