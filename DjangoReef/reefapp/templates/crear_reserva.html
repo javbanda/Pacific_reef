@@ -33,17 +33,16 @@
                                     <h5 class="card-title">Habitación {{ habitacion.numero }}</h5>
                                     <p class="text-muted">{{ habitacion.descripcion }}</p>
 
-                                    <div class="row mt-3">
-                                        <div class="col-6">
-                                            <strong><i class="fas fa-star me-2 text-warning"></i>Categoría:</strong>
-                                            <br>{{ habitacion.categoria.nombre }}
-                                        </div>
-                                        <div class="col-6">
-                                            <strong><i class="fas fa-users me-2 text-info"></i>Capacidad:</strong>
-                                            <br>{{ habitacion.capacidad_adultos }} adultos + {{
-                                            habitacion.capacidad_ninos }} niños
-                                        </div>
-                                    </div>
+<div class="row mt-3">
+    <div class="col-6">
+        <strong><i class="fas fa-star me-2 text-warning"></i>Categoría:</strong>
+        <br>{{ habitacion.categoria.nombre }}
+    </div>
+    <div class="col-6">
+        <strong><i class="fas fa-users me-2 text-info"></i>Capacidad:</strong>
+        <br>{{ habitacion.capacidad_adultos }} adultos + {{ habitacion.capacidad_ninos }} niños
+    </div>
+</div>
 
                                     <div class="row mt-2">
                                         <div class="col-6">
@@ -58,14 +57,13 @@
                                     </div>
 
                                     <!-- Mostrar precio real de la habitación -->
-                                    <div class="row mt-3">
-                                        <div class="col-12">
-                                            <strong><i class="fas fa-tag me-2 text-primary"></i>Precio por
-                                                noche:</strong>
-                                            <span class="h5 text-success ms-2">${{ habitacion.precio_base|floatformat:0
-                                                }}</span>
-                                        </div>
-                                    </div>
+<div class="row mt-3">
+    <div class="col-12">
+        <strong><i class="fas fa-tag me-2 text-primary"></i>Precio por
+            noche:</strong>
+        <span class="h5 text-success ms-2">${{ habitacion.precio_base|floatformat:0}}</span>
+    </div>
+</div>
                                 </div>
                             </div>
                         </div>
@@ -101,30 +99,26 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label"><strong>Adultos</strong></label>
-                                        <select class="form-select" name="adultos" required>
-                                            <option value="1" {% if request.GET.adults=="1" %}selected{% endif %}>1
-                                                adulto</option>
-                                            <option value="2" {% if request.GET.adults=="2" %}selected{% endif %}>2
-                                                adultos</option>
-                                            <option value="3" {% if request.GET.adults=="3" %}selected{% endif %}>3
-                                                adultos</option>
-                                            <option value="4" {% if request.GET.adults=="4" %}selected{% endif %}>4
-                                                adultos</option>
-                                        </select>
+<select class="form-select" name="adultos" required>
+    {% with adults_param=request.GET.adults %}
+    <option value="1" {% if adults_param == "1" %}selected{% endif %}>1 adulto</option>
+    <option value="2" {% if adults_param == "2" %}selected{% endif %}>2 adultos</option>
+    <option value="3" {% if adults_param == "3" %}selected{% endif %}>3 adultos</option>
+    <option value="4" {% if adults_param == "4" %}selected{% endif %}>4 adultos</option>
+    {% endwith %}
+</select>
                                     </div>
 
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label"><strong>Niños</strong></label>
-                                        <select class="form-select" name="ninos">
-                                            <option value="0" {% if request.GET.children=="0" %}selected{% endif %}>0
-                                                niños</option>
-                                            <option value="1" {% if request.GET.children=="1" %}selected{% endif %}>1
-                                                niño</option>
-                                            <option value="2" {% if request.GET.children=="2" %}selected{% endif %}>2
-                                                niños</option>
-                                            <option value="3" {% if request.GET.children=="3" %}selected{% endif %}>3
-                                                niños</option>
-                                        </select>
+<select class="form-select" name="ninos">
+    {% with children_param=request.GET.children %}
+    <option value="0" {% if children_param == "0" %}selected{% endif %}>0 niños</option>
+    <option value="1" {% if children_param == "1" %}selected{% endif %}>1 niño</option>
+    <option value="2" {% if children_param == "2" %}selected{% endif %}>2 niños</option>
+    <option value="3" {% if children_param == "3" %}selected{% endif %}>3 niños</option>
+    {% endwith %}
+</select>
                                     </div>
                                 </div>
 
