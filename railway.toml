@@ -5,6 +5,9 @@ buildCommand = "cd DjangoReef && pip install -r requirements.txt"
 [deploy]
 startCommand = "cd DjangoReef && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn PacificReef.wsgi"
 
+[nixpacks]
+provider = "python"
+
 [[services]]
 name = "web"
 [services.env]
