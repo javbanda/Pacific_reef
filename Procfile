@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn PacificReef.wsgi
+web: cd DjangoReef && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn PacificReef.wsgi
