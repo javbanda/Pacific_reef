@@ -1,1 +1,1 @@
-web: cd DjangoReef && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:$PORT
+web: cd DjangoReef && pip install waitress && python manage.py migrate && python manage.py collectstatic --noinput && waitress-serve --port=$PORT PacificReef.wsgi:application
